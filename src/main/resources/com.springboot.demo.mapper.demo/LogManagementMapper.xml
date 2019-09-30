@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.demo.test.dao.ILogManagementDao">
+
+    <resultMap id="logMap" type="com.springboot.demo.test.vo.Log">
+        <result column="user" property="user"/>
+        <result column="type" property="operationType"/>
+        <result column="detail" property="logDetail"/>
+        <result column="time" property="createTime"/>
+    </resultMap>
+
+    <select id="getLogList" parameterType="com.springboot.demo.test.vo.Log" resultMap="logMap">
+        select t.* from kbms_log_management t where 1=1
+        <if test="user != null and user != ''">
+            and t.user like
+            concat(concat('%',#{user}),'%')
+        </if>
+        <if test="logDetail != null and logDetail != ''">
+            and t.logDetail like
+            concat(concat('%',#{logDetail}),'%')
+        </if>
+        <if test="operationType != null and operationType != ''">
+            and t.operationType like
+            concat(concat('%',#{operationType}),'%')
+        </if>
+        <if test="beginTime != null and beginTime != ''">
+            and t.time &gt;= #{beginTime}
+        </if>
+        <if test="endTime != null and endTime != ''">
+            and t.time &lt;= #{endTime}
+        </if>
+        order by t.time desc
+    </select>
+
+
+</mapper>
