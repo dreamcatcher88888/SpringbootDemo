@@ -22,7 +22,7 @@ public class TestController {
 
     @RequestMapping("/list")
     public BaseResponse getLogList(@RequestParam(defaultValue = "1", required = false) int pageNo,
-                                   @RequestParam(defaultValue = "10", required = false) int pageSize, Log log) {
+                                   @RequestParam(defaultValue = "20", required = false) int pageSize, Log log) {
         Pagination<Log> pagination = new Pagination<>(pageNo, pageSize, log);
         PageInfo pageInfo = logManagementService.getLogList(pagination);
         CommonResponse<PageInfo> commonResponse = new CommonResponse<>();
