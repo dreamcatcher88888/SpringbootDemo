@@ -1,9 +1,9 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 10.4.5.48
+Source Server         : 10.x.x.x
 Source Server Version : 50723
-Source Host           : 10.4.5.48:3306
+Source Host           : 10.x.x.x:3306
 Source Database       : kbms
 
 Target Server Type    : MYSQL
