@@ -10,7 +10,7 @@
     </resultMap>
 
     <select id="getLogList" parameterType="com.springboot.demo.test.vo.Log" resultMap="logMap">
-        select t.* from kbms_log_management t where 1=1
+        select t.* from log_management t where 1=1
         <if test="user != null and user != ''">
             and t.user like
             concat(concat('%',#{user}),'%')
